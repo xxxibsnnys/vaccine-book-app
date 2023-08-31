@@ -8,9 +8,10 @@ export default function Home() {
     <main >
         <Banner/>
         <div style ={{margin:"20px", display:"flex", flexDirection:"row", 
-        flexWrap:"wrap" , justifyContent:"space-around", alignContent:"space-around"  } }>
-          <ProductCard />
-
+        flexWrap:"wrap" , justifyContent:"space-around", alignContent:"space-around"} }>
+          <ProductCard hosName='Chula' imgSrc='/img/chula.jpg'/>
+          <ProductCard hosName='Rajavithi' imgSrc='/img/rajavithi.jpg'/>
+          <ProductCard hosName='Thammasat' imgSrc='/img/thammasat.jpg'/>
         </div>
     </main>
   )
