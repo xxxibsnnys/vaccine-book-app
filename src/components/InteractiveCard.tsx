@@ -19,7 +19,6 @@ export default function InteractiveCard( {children, contentName}:{children:React
             event.currentTarget.classList.remove('bg-neutral-200')
         }
     }
-    
     return (
         <div className='w-1/5 h-[300px] rounded-lg shadow-lg'
         onClick={()=>onCardSelected()}
