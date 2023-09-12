@@ -12,7 +12,8 @@ export default function Banner () {
             objectFit='cover'
             />
             <div className={styles.bannerText}>
-                <h1>Welcome to Phichet Hospital</h1>
+                <h1 className='text-xl font-san'>Welcome to </h1>
+                <h1 className='text-3xl font-serif'>Phichet Hospital</h1>
             </div>
         </div>
         

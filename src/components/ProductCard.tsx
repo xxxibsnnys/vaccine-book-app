@@ -1,22 +1,19 @@
-import  styles from './productcard.module.css';
+import InteractiveCard from './InteractiveCard';
 import Image from 'next/image';
 
-export default function productCard(){
+export default function productCard({hosName, imgSrc}:{hosName:string, imgSrc:string}){
     return (
-        <div className={styles.card}>
-            <div className={styles.cardimg}>
-                <Image src ={'/img/astra.jpg'}
+        <InteractiveCard contentName={hosName}>
+            <div className='w-full h-[70%] relative rounded-t-lg'>
+                <Image src ={imgSrc}
                 alt='Product'
                 fill ={true}
-                objectFit='cover'
+                className='object-cover rounded-t-lg'
                 />
             </div>
-            <div className={styles.headtext}> 
-                AstraZeneca 
-                <div className={styles.contenttext}> 
-                    AstraZeneca is a COVID-19 vaccine by Oxford University. 
-                </div>
+            <div className='w-full h-[30%] p-[10px] text-black'> 
+                {hosName}
             </div>
-        </div>
+        </InteractiveCard>
     );
 }
