@@ -25,7 +25,7 @@ export default function ProductCard({hosName, imgSrc, onRatingChange, passedRati
             
             <Rating name="rating" value={rating} 
             onChange={(e, newValue)=>{e.stopPropagation(); setRating(newValue || 0); 
-            onRatingChange(newValue)}}/>
+            onRatingChange(newValue||0)}}/>
         </InteractiveCard>
     );
 }
