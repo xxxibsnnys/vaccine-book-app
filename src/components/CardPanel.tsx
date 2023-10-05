@@ -2,6 +2,7 @@
 import ProductCard from "./ProductCard";
 import { useReducer, useState } from "react"
 import { List } from "@mui/material";
+import Link from "next/link";
 
 export default function CardPanel() {
     const [ratingList, setRatingList] = useState<string[]>([]);
@@ -17,32 +18,31 @@ export default function CardPanel() {
 
     const [ratingMap, dispatchRating] = useReducer(ratingReducer, new Map<string, number>());
 
+	const mockProductCard = [{hid:"001", name:"Chulalongkorn Hospital", shortName:"chula", img:"/img/chula.jpg"},
+	{hid:"002", name:"Rajavithi Hospital", shortName:"rajavithi", img:"/img/rajavithi.jpg"},
+	{hid:"003", name:"Thammasat University Hospital", shortName:"thammasat", img:"/img/thammasat.jpg"}]
+
     return(
         <div>
             <div style ={{margin:"20px", display:"flex", flexDirection:"row", 
             flexWrap:"wrap" , justifyContent:"space-around", alignContent:"space-around", backgroundColor:"white"} }>
                 
-                <ProductCard
-				hosName='Chulalongkorn Hospital'
-				imgSrc='/img/chula.jpg'
-				onRatingChange={(rating:number) => dispatchRating({type: 'add', hospitalName: 'chula', rating: rating})}
-				passedRating={ratingList.findIndex((hosName)=>hosName=='chula') != -1 ? ratingMap.get('chula') || 0 : 0}
-				/>
-            
-                <ProductCard
-				hosName='Rajavithi Hospital'
-				imgSrc='/img/rajavithi.jpg'
-				onRatingChange={(rating:number) => dispatchRating({type: 'add', hospitalName: 'rajavithi', rating: rating})}
-				passedRating={ratingList.findIndex((hospitalName)=>hospitalName=='rajavithi') != -1 ? ratingMap.get('rajavithi') || 0 : 0}
-				/>
+				{
+					mockProductCard.map((info) => (
+						<Link href={`/hospital/${info.hid}`} key={info.hid} passHref={true} className="w-1/5">
+							<ProductCard
+							hosName={info.name}
+							imgSrc={info.img}
+							onRatingChange={(rating:number) => dispatchRating({type: 'add', hospitalName: info.shortName, rating: rating})}
+							passedRating={ratingList.findIndex((hospitalName)=>hospitalName==info.shortName) != -1 ? ratingMap.get(info.shortName) || 0 : 0}
+							/>
+						</Link>
+						)
+					)	
+				}
 
-                <ProductCard
-				hosName='Thammasat University Hospital'
-				imgSrc='/img/thammasat.jpg'
-				onRatingChange={(rating:number) => dispatchRating({type: 'add', hospitalName: 'thammasat', rating: rating})}
-				passedRating={ratingList.findIndex((hospitalName)=>hospitalName=='thammasat') != -1 ? ratingMap.get('thammasat') || 0 : 0}
-				/>
-            
+                
+				
             </div>
             <div>
 				<List>

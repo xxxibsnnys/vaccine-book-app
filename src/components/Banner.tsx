@@ -19,6 +19,12 @@ export default function Banner () {
                 <h1 className='text-xl font-san'>Welcome to </h1>
                 <h1 className='text-3xl font-serif'>Phichet Hospital</h1>
             </div>
+            <button
+				className='relative top-[55vh] left-[85vw] z-20 bg-[#FFFFFF] hover:bg-[#474647] hover:text-white text-black rounded-lg px-[20px] py-[10px] mt-[20px]'
+				onClick={(e)=>{e.stopPropagation(); window.location.href='/hospital'}}
+			>
+					Hospital List
+			</button>
         </div>
     );
 }
