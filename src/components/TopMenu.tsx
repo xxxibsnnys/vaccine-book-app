@@ -1,17 +1,20 @@
 import styles from './topmenu.module.css';
 import Image from 'next/image';
 import TopMenuItem from './TopMenuItem';
-import Link from 'next/link';
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { Link } from '@mui/material';
 
+export default async function TopMenu(){
 
+	const session = await getServerSession(authOptions)
 
-export default async function TopMenu () {
-	const session = await getServerSession(authOptions);
-	return (
-		<div className={styles.menuContainer}>
-			{
+    return(
+        <div className={styles.menucontainer}>
+            <Image src={'/img/corona.png'} className={styles.logoimg} alt='logo' 
+            width={0} height={0} sizes='100vh' />  
+            <TopMenuItem title='Booking' pageref='/booking'/>
+            {
 				session?
 				<Link href="api/auth/signout">
 					<div className='flex items-center absolute left-0 h-full px-2'>
@@ -23,11 +26,8 @@ export default async function TopMenu () {
 						Sign-in</div>
 				</Link>
 			}
-			<TopMenuItem title='Booking' pageref='/booking'/>
-			<Link href='/'>
-				<Image src={'/img/medical_chart.png'} className={styles.logoImg}
-				alt='logo' width={0} height={0} sizes="100%"/>
-			</Link>
-		</div>
-	)
-  }
+
+        </div>
+		
+    )
+}
