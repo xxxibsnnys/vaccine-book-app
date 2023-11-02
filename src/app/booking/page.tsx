@@ -1,12 +1,16 @@
-"user client"
-import LocationDateReserve from "@/components/LocationDateReserve"
+
+
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/getUserProfile";
-import TextField from "@mui/material/TextField"
+
+import getHospitals from "@/libs/getHospitals"; 
+import Form from "@/components/Form"
 
 export default async function Booking(){
 
+
+	const hospitals = await getHospitals();
 	const session = await getServerSession(authOptions);
 	if(!session || !session.user.token)	return null
 	const profile = await getUserProfile(session.user.token)
@@ -34,11 +38,12 @@ export default async function Booking(){
                 <div className="text-md text-left text-gray-600">
                     Pick-up Name, ID, Hospital and Date
                 </div>
-                <LocationDateReserve/>
+				<Form hospitals={hospitals}/>
+                {/* <LocationDateReserve/> */}
                 
             </div>
-            <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
-            shadow-sm text-white">Reserve vaccine</button>
+            {/* <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
+            shadow-sm text-white">Reserve vaccine</button> */}
         </main>
     )
 }

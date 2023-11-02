@@ -30,13 +30,7 @@ export default function Banner () {
 					:null
 				}
             </div>
-            {
-					session?
-					<div className='z-30 absolute top-0 right-10 font-semibold text-xl'>
-						Hello {session.user?.name}
-					</div>
-					:null
-			}
+
             <button
 				className='relative top-[55vh] left-[85vw] z-20 bg-[#FFFFFF] hover:bg-[#474647] hover:text-white text-black rounded-lg px-[20px] py-[10px] mt-[20px]'
 				onClick={(e)=>{e.stopPropagation(); window.location.href='/hospital'}}

@@ -1,5 +1,8 @@
 import Image from 'next/image'
 import getHospital from '@/libs/getHospital';
+import { Link } from '@mui/material';
+
+
 export default async function hospitalDetailPage({params}: {params: {hid: string}}) {
 	const hospitalDetail = await getHospital(params.hid);
     return (
@@ -16,6 +19,11 @@ export default async function hospitalDetailPage({params}: {params: {hid: string
 					<div className='text-xl mx-5 my-5'>Address: {hospitalDetail.data.address}, {hospitalDetail.data.district}, {hospitalDetail.data.province} {hospitalDetail.data.postalcode}
 					</div>
 					<div className='text-xl mx-5 my-5'>Tel: {hospitalDetail.data.tel}</div>
+					<Link href={`/booking?id=${params.hid}&name=${hospitalDetail.data.name}`}>
+						<button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-1 text-white shadow-sm">
+							Booking Vaccine
+						</button>
+					</Link>
 				</div>
 			</div>
 		</main>
