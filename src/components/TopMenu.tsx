@@ -15,18 +15,18 @@ export default async function TopMenu(){
 				<Image src={'/img/corona.png'} className={styles.logoimg} alt='logo' 
 				width={0} height={0} sizes='100vh' />  
 				<TopMenuItem title='Booking' pageref='/booking'/>
-				<Link href='/mybooking' className='flex items-center h-full px-2'>
+				<Link href='/mybooking' className='flex text-black items-center h-full px-2'>
 					My Booking
 				</Link>
 				{
 					session?
 					<Link href="api/auth/signout">
-						<div className='flex items-center absolute left-0 h-full px-2'>
+						<div className='flex text-black items-center absolute left-0 h-full px-2'>
 							Sign-out of {session.user?.name}</div>
 					</Link>
 					:
 					<Link href="api/auth/signin">
-						<div className='flex items-center absolute left-0 h-full px-2'>
+						<div className='flex text-black items-center absolute left-0 h-full px-2'>
 							Sign-in</div>
 					</Link>
 				}

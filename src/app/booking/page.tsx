@@ -30,7 +30,7 @@ export default async function Booking(){
 					</div>
 
 				</div>
-				:null
+				:null	
 			}
             <div className="text-xl font-medium">New Reservatitons</div>
     
@@ -39,11 +39,11 @@ export default async function Booking(){
                     Pick-up Name, ID, Hospital and Date
                 </div>
 				<Form hospitals={hospitals}/>
-                {/* <LocationDateReserve/> */}
+                
                 
             </div>
-            {/* <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2
-            shadow-sm text-white">Reserve vaccine</button> */}
+
+
         </main>
     )
 }

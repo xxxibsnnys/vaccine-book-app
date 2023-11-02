@@ -9,14 +9,15 @@ export default function myBooking() {
 	const dispatch = useDispatch<AppDispatch>()
 	return (
 		<main className='w-[100%] flex flex-col items-center space-y-4 mt-[12vh]'>
-            <div>{bookingItems.length} </div>
+            
 			{
             
 			bookingItems.length == 0?
 				<div className='text-2xl'>No Vaccine bookings</div>
 			:
 				bookingItems.map((bookingItem)=>(
-					<div className='bg-slate-200 rounded w-[90%] px-2 py-2' key={bookingItem.id}>
+                    //make the text color black
+					<div className='bg-slate-200 rounded w-[90%] px-2 py-2 text-black' key={bookingItem.id}>
 						<div className='text-xl'>{bookingItem.location}</div>
 						<div className='text-sm'>Name: {bookingItem.name}</div>
 						<div className='text-sm'>Surname: {bookingItem.surname}</div>
