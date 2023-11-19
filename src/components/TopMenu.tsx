@@ -14,6 +14,7 @@ export default async function TopMenu(){
 			{/* <div className='flex justify-start w-[50%]'> */}
 				<Image src={'/img/corona.png'} className={styles.logoimg} alt='logo' 
 				width={0} height={0} sizes='100vh' />  
+				<TopMenuItem title='Hospitals' pageref='/hospital'/>
 				<TopMenuItem title='Booking' pageref='/booking'/>
 				<Link href='/mybooking' className='flex text-black items-center h-full px-2'>
 					My Booking
